@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 
 from core.views import hello
+from core.models import Movie
+
+admin.register(Movie)  # to nie musie tu być bo to powino działać w pliku admin.py
 
 urlpatterns = [
     path('admin/', admin.site.urls),
