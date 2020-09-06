@@ -15,6 +15,14 @@ class Genre(models.Model):
     def __str__(self):
         return self.name
 
+class Director(models.Model):  #  to jest model reżysera
+    name = models.CharField(max_length=100, null=True)
+    second_name = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return (self.second_name, self.name)
+
+
 class Movie(models.Model):  #  to jest podstawowy model models.Model
     genre = models.ForeignKey(Genre, null=True, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=100)
@@ -22,6 +30,10 @@ class Movie(models.Model):  #  to jest podstawowy model models.Model
     released = models.DateField(null=True)
     description = models.TextField(null=True, blank=True)   # null = True, czy zazwalasz danemu rekordowi być zerowym, blank odnosie się do formularzy
     created = models.DateTimeField(auto_now_add=True)
+    director=models.ForeignKey(Director,null=True,on_delete=models.SET_NULL)
+
+    class Meta:
+        unique_together = ('title', 'released')
 
 
     def __str__(self):  # metofa reprezentuje w ten sposób nowe filmy
