@@ -23,5 +23,5 @@ admin.register(Movie)  # to nie musie tu być bo to powino działać w pliku adm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello)  # ten hello/ to jest endpoint
+    path('hello/', hello)  # ten hello/ to jest endpoint a hello widok
 ]
