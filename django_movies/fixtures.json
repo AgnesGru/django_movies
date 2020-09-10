@@ -1,0 +1,141 @@
+[
+  {
+    "model": "core.genre",
+    "pk": 1,
+    "fields": {
+      "name": "historia",
+      "age_limit": 20
+    }
+  },
+  {
+    "model": "core.genre",
+    "pk": 2,
+    "fields": {
+      "name": "comedy",
+      "age_limit": 45
+    }
+  },
+  {
+    "model": "core.genre",
+    "pk": 3,
+    "fields": {
+      "name": "action",
+      "age_limit": 55
+    }
+  },
+  {
+    "model": "core.director",
+    "pk": 1,
+    "fields": {
+      "name": "Agnieszka",
+      "second_name": "Gruszecka"
+    }
+  },
+  {
+    "model": "core.director",
+    "pk": 2,
+    "fields": {
+      "name": "Marcin",
+      "second_name": "Gruszecki"
+    }
+  },
+  {
+    "model": "core.director",
+    "pk": 3,
+    "fields": {
+      "name": "Patryk",
+      "second_name": "Wega"
+    }
+  },
+  {
+    "model": "core.movie",
+    "pk": 1,
+    "fields": {
+      "genre": 1,
+      "title": "Django",
+      "rating": null,
+      "released": null,
+      "description": null,
+      "created": "2020-09-05T12:38:16.065Z",
+      "director": null
+    }
+  },
+  {
+    "model": "core.movie",
+    "pk": 2,
+    "fields": {
+      "genre": 2,
+      "title": "Movie",
+      "rating": null,
+      "released": null,
+      "description": null,
+      "created": "2020-09-05T12:39:10.572Z",
+      "director": null
+    }
+  },
+  {
+    "model": "core.movie",
+    "pk": 3,
+    "fields": {
+      "genre": 1,
+      "title": "Ale jazda",
+      "rating": 9,
+      "released": "2020-09-05",
+      "description": null,
+      "created": "2020-09-05T12:53:01.147Z",
+      "director": null
+    }
+  },
+  {
+    "model": "core.movie",
+    "pk": 4,
+    "fields": {
+      "genre": 2,
+      "title": "wow",
+      "rating": 7,
+      "released": "2020-08-22",
+      "description": "genialne",
+      "created": "2020-09-05T12:53:01.147Z",
+      "director": null
+    }
+  },
+  {
+    "model": "core.movie",
+    "pk": 5,
+    "fields": {
+      "genre": 3,
+      "title": "x-men",
+      "rating": 4,
+      "released": null,
+      "description": "scienc fiction",
+      "created": "2020-09-05T12:53:01.147Z",
+      "director": null
+    }
+  },
+  {
+    "model": "core.movie",
+    "pk": 6,
+    "fields": {
+      "genre": 3,
+      "title": "iluzja",
+      "rating": 10,
+      "released": null,
+      "description": "magic",
+      "created": "2020-09-05T12:53:01.147Z",
+      "director": null
+    }
+  },
+  {
+    "model": "core.movie",
+    "pk": 8,
+    "fields": {
+      "genre": 2,
+      "title": "Wow1",
+      "rating": 5,
+      "released": "2020-09-08",
+      "description": "dsfasdfa",
+      "created": "2020-09-06T10:18:06.966Z",
+      "director": null
+    }
+  }
+]

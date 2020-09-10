@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to django</h1>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                {{movie.title}} ({{movie.released.year}}) by {{movie.director}}, {{movie.genre.name}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %)

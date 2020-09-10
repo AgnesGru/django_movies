@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+
+</head>
+<body>
+    <h1>Hello, my friend...</h1>
+    {% for adjective in adjectives %}
+        {% if adjective != 'cruel' %}
+            <p>This is a {{adjective}} world ...</p>
+        {% endif %}
+    {% endfor %}
+
+</body>
+</html>
