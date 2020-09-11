@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import hello, movies
-from core.models import Movie
+from core.views import hello, movies  # to są widoki
+from core.models import Movie # to jest klasa z models
 
 admin.register(Movie)  # to nie musie tu być bo to powino działać w pliku admin.py
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello),  # ten hello/ to jest endpoint a hello widok
+    path('hello/', hello),  # ten 'hello/' to jest endpoint a hello widok
     path('movies/', movies),
     path('', movies)
 ]
