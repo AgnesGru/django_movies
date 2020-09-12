@@ -43,3 +43,10 @@ class MovieView(ListView):  # jeszcze upraszczamy
 class MovieCreateView(FormView):
     template_name = 'form.html'
     form_class = MovieForm
+
+
+
+
+
+
+

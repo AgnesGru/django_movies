@@ -4,7 +4,7 @@
 ​
 {% block content %}
     <form method="post">  <!-- create z crud-->
-        {% csrf_token %} <!-- to wezuca sie przy metodzie post-->
+        {% csrf_token %} <!-- to wrzuca sie przy metodzie post-->
         {% bootstrap_form form %}
         {% buttons %}
             <input type="submit" value="Submit" class="btn btn-primary">
