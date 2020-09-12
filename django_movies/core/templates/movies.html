@@ -3,12 +3,12 @@
 {% block content %}
     <h1>List of movies by dr G</h1><br/>
     <ul>
-        {% for movie in movies %}
-            {% if movie.genre.age_limit == age_limit.kids %}
+        {% for movie in object_list %}
+          {% if movie.genre.age_limit == age_limit.kids %}
             <li>
                 <b>{{movie.title}}</b> ({{movie.released.year}}) by {{movie.director}}, <em>{{movie.genre.name}}</em>
             </li>
-            {% endif %}
+           {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}
