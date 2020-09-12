@@ -1,5 +1,5 @@
 
-{% load bootstrap4 %}
+{% load bootstrap4 %} <!-- to jest jak import-->
 {% load static %}
 
 <html {% if LANGUAGE_CODE %} lang="{{ LANGUAGE_CODE }}"{% endif %}>
@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container fixed">
 <!--        <a class="navbar-brand" href="/">Django Movies</a> bezposredni link!!!-->
-        <a class="navbar-brand" href="">Django Movies</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Django Movies</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
           <span class="navbar-toggler-icon"></span>
         </button>

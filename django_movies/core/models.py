@@ -2,15 +2,16 @@ from django.db import models
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from model_utils import Choices
 
-STATUS_CHOICES = ((1,10), (2,13), (3, 16), (4,18))  # tu może być string gdzie 10, 12
+AGE_LIMITS = Choices((0,'kids', "kids"), (1,'teens', 'kids'), (2, 'adults', 'kids'),)  # tu może być string gdzie 10, 12
 
 class Genre(models.Model):
     name = models.CharField(max_length=20, unique=True)
     # age_limit = models.IntegerField(
     #     null=True, blank=True, validators=[MaxValueValidator(99), MinValueValidator(1)]
     # )
-    age_limit = models.IntegerField(null=True, blank=True,choices=STATUS_CHOICES, default=10)
+    age_limit = models.IntegerField(null=True, blank=True, choices=AGE_LIMITS)
 
     def __str__(self):
         return self.name
