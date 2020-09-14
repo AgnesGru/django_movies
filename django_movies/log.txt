@@ -1,0 +1,11 @@
+WARNING:django.request:Not Found: /movie_detail
+WARNING:django.request:Not Found: /movie_detail
+WARNING:django.request:Not Found: /core/
+WARNING:django.request:Not Found: /core/movie_detail/12
+WARNING:django.request:Not Found: /core/movie_detail/11
+WARNING:django.request:Not Found: /core/movie_detail/13
+WARNING:django.request:Not Found: /core/movie_detail/13
+WARNING:django.request:Not Found: /core/movie_detail/13
+WARNING:django.request:Not Found: /core/movie_detail/12
+WARNING:django.request:Not Found: /core/movie_detail/11
+WARNING:django.request:Not Found: /core/movie_detail
