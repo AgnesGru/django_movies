@@ -1,13 +1,13 @@
-{% extends "base.html" %}
-​
-{% load bootstrap4 %}
-​
+{% extends "base.html" %}​
+<!--{% load bootstrap4 %}​-->
+{% load crispy_forms_tags %}
 {% block content %}
-    <form method="post">  <!-- create z crud-->
-        {% csrf_token %} <!-- to wrzuca sie przy metodzie post-->
-        {% bootstrap_form form %}
-        {% buttons %}
-            <input type="submit" value="Submit" class="btn btn-primary">
-        {% endbuttons %}
-    </form>
-{% endblock %}>
+    {% crispy form %}
+<!--    <form method="post">  &lt;!&ndash; create z crud&ndash;&gt;-->
+<!--        {% csrf_token %} &lt;!&ndash; to wrzuca sie przy metodzie post&ndash;&gt;-->
+<!--        {% bootstrap_form form %}-->
+<!--        {% buttons %}-->
+<!--            <input type="submit" value="Submit" class="btn btn-primary">-->
+<!--        {% endbuttons %}-->
+<!--    </form>-->
+{% endblock %}

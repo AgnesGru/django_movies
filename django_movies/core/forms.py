@@ -1,10 +1,13 @@
 from django import forms
 import re
+from django.db import models
 from django.core.exceptions import ValidationError
-from core.models import Genre, Movie
+from core.models import Genre, Movie, Director, Country
 from datetime import date
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Row, Column
 
-def capitalized_vlaidator(value: str):  # czyscimy description
+def capitalized_vlaidator(value: str):  # czyscimy description, wymuszanie wielkiej litery na początku
     if value[0].islower():
         raise ValidationError('Value must be capitalized.')
 
@@ -23,17 +26,29 @@ class MovieForm(forms.ModelForm):
 
     class Meta:
         model = Movie
-        fields = '__all__'  # tu można wpisać w tupili nazwy fiildsów, żeby kontrolować z pozycji back-end
+        fields = '__all__'  # tu można wpisać w tupili albo liscie nazwy fiildsów, żeby kontrolować z pozycji back-end
         # fields = ('title', 'rating', 'released',)
 
     title = forms.CharField(max_length=100)
-    # genre = forms.ModelChoiceField(queryset=Genre.objects.all())
+    genre = forms.ModelChoiceField(queryset=Genre.objects.all())
     rating = forms.IntegerField(min_value =1, max_value=10)
     released = PastMonthField()
-    # description = forms.CharField(widget=forms.Textarea, required=False)
-    # created = models.DateTimeField(auto_now_add=True)
-    # director = models.ForeignKey(Director, null=True, on_delete=models.SET_NULL)
-    # countries = models.ManyToManyField(Country, null=True, related_name='movies')
+    description = forms.CharField(widget=forms.Textarea, required=False)
+    created = models.DateTimeField(auto_now_add=True)
+    director = models.ForeignKey(Director, null=True, on_delete=models.SET_NULL)
+    countries = models.ManyToManyField(Country, null=True, related_name='movies')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper() # from crispy_forms.helper
+        self.helper.layout = Layout(
+            'title',
+            Row(Column('genre'), Column('rating'), Column('released')),
+            Row(Column('director'), Column('released')),
+            'description',
+            Submit('submit', 'Submit'),
+        )
+
 
     def clean_descriptnion(self):
         initial = self.cleaned_data['description']

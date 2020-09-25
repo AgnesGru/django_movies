@@ -1,9 +1,6 @@
 {% extends "base.html" %}
-
 {% load movie_extras %}
-
 {% block content %}
-
   <ul>
     {% for movie in object_list %}
       <li>{% movie_format movie %}</li>

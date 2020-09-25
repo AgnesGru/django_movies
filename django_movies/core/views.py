@@ -20,7 +20,7 @@ LOGGER = logging.getLogger(__name__)
 #     # return render(request, template_name ='movies.html', context={'movies': Movie.objects.filter().order_by('-rating')},)
 #     return render(request, template_name ='movies.html',
 #                   context={'movies': Movie.objects.filter().order_by('-rating'), 'age_limit' : AGE_LIMITS})
-
+# CBV
 # class MovieView(views.View):
 #     def get(self, request):
 #         return render(request,
@@ -44,7 +44,7 @@ LOGGER = logging.getLogger(__name__)
 
 class MovieCreateView(CreateView):
     model = Movie
-    title = "Add Movie"
+    # title = "Add Movie"
     template_name = 'form.html'
     form_class = MovieForm
     success_url = reverse_lazy('core:movie_list')
@@ -55,10 +55,10 @@ class MovieCreateView(CreateView):
 
 def hello(request):
     LOGGER.warning("\n\nCos smiesznego")
-    # return HttpResponse('Hello World')
     return render(request, template_name = 'hello.html',
                   context = {'adjectives':['beautiful', 'cruel', 'wonderful']},)
-
+#
+# przekazywanie kontextu w ListView
 # class MovieView(ListView):  # to jest do updetowania obiektów
 #     template_name = 'movies.html'
 #     model = Movie

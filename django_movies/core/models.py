@@ -4,14 +4,13 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from model_utils import Choices
 
-AGE_LIMITS = Choices((0,'kids', "kids"), (1,'teens', 'kids'), (2, 'adults', 'kids'),)  # tu może być string gdzie 10, 12
+AGE_LIMITS = Choices((0,'kids', "kids"), (1,'teens', 'kids'), (2, 'adults', 'kids'),)
 
 class Genre(models.Model):
     name = models.CharField(max_length=20, unique=True)
-    # age_limit = models.IntegerField(
-    #     null=True, blank=True, validators=[MaxValueValidator(99), MinValueValidator(1)]
-    # )
-    age_limit = models.IntegerField(null=True, blank=True, choices=AGE_LIMITS)
+    age_limit = models.IntegerField(null=True, blank=True,
+                                    choices=AGE_LIMITS,
+                                    default = 2)
 
     def __str__(self):
         return self.name
@@ -47,6 +46,6 @@ class Movie(models.Model):  #  to jest podstawowy model models.Model
         unique_together = ('title', 'released')
 
 
-    def __str__(self):  # metofa reprezentuje w ten sposób nowe filmy
+    def __str__(self):  # print movies, ont number of objects
         return f"{self.title} from {self.released}"
 
