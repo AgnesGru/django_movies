@@ -21,7 +21,7 @@ class PastMonthField(forms.DateField):
 
     def clean(selfself, value):
         result = super().clean(value)
-        return date(year=result.year, month=result.month, day=1)
+        return date(year=result.year, month=result.month, day=1) # tu zawsze będzie 1 dzien miesiaca
 
 class MovieForm(forms.ModelForm):
 
