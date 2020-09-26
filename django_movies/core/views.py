@@ -78,11 +78,11 @@ class MovieUpdateView(UpdateView):
         LOGGER.warning('Invalid data provided.')
         return super().form_invalid(form)
 
-    def post(self, request, * args, **kwargs):
-        result = super().post(request, *args, **kwargs)
-        print(request)
-        LOGGER.info(f"Successfully added new movie: {self.request.POST.get('title')}")
-        return
+    # def post(self, request, * args, **kwargs):
+    #     result = super().post(request, *args, **kwargs)
+    #     print(request)
+    #     LOGGER.info(f"Successfully added new movie: {self.request.POST.get('title')}")
+    #     return
 
 class MovieDeleteView(DeleteView):
     template_name = 'movie_confirm_delete.html'

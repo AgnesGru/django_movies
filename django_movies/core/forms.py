@@ -5,7 +5,8 @@ from django.core.exceptions import ValidationError
 from core.models import Genre, Movie, Director, Country
 from datetime import date
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column
+from crispy_forms.bootstrap import FormActions
+from crispy_forms.layout import Layout, Submit, Row, Column, Div, Button
 
 def capitalized_vlaidator(value: str):  # czyscimy description, wymuszanie wielkiej litery na początku
     if value[0].islower():
@@ -46,11 +47,13 @@ class MovieForm(forms.ModelForm):
             Row(Column('genre'), Column('rating'), Column('released')),
             Row(Column('director'), Column('released')),
             'description',
-            Submit('submit', 'Submit'),
-        )
+            Div('countries', css_id='black-fields'),
+            FormActions(
+                Submit('submit', 'Submit'),
+                Button('cancel', 'Cancel'),
+            ))
 
-
-    def clean_descriptnion(self):
+    def clean_description(self):
         initial = self.cleaned_data['description']
         sentences = re.sub(r'\s*\.s*', '.', initial).split('.')
         cleaned='.'.join(sentence.capitalize() for sentence in sentences)
