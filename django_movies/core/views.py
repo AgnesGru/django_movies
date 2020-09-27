@@ -1,18 +1,21 @@
 from django.shortcuts import render
 # from django.utils import timezone
-from .models import Movie, AGE_LIMITS
+from .models import Movie #, AGE_LIMITS
 from django import views
-from django.views.generic import TemplateView, ListView, FormView, CreateView, UpdateView, DeleteView, DetailView
+from django.contrib.auth.mixins import (LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin)
+from django.views.generic import (TemplateView, ListView, FormView,
+                                  CreateView, UpdateView, DeleteView, DetailView)
 from core.forms import MovieForm
 from django.urls import reverse_lazy
 import logging
 
 
-logging.basicConfig(
-    filename='log.txt',
-    filemode = 'w',
-    level = logging.INFO,
-)
+#
+# logging.basicConfig(
+#     filename='log.txt',
+#     filemode = 'w',
+#     level = logging.INFO,
+# )
 LOGGER = logging.getLogger(__name__)
 
 # def movies(request): # to jest widok!
@@ -42,9 +45,9 @@ LOGGER = logging.getLogger(__name__)
 #     form_class = MovieForm
 
 
-class MovieCreateView(CreateView):
-    model = Movie
-    # title = "Add Movie"
+class MovieCreateView(CreateView, LoginRequiredMixin, PermissionRequiredMixin):
+    # model = Movie
+    title = "Add Movie"
     template_name = 'form.html'
     form_class = MovieForm
     success_url = reverse_lazy('core:movie_list')
@@ -68,7 +71,13 @@ def hello(request):
 #         context['age_limit'] = AGE_LIMITS
 #         return context
 
-class MovieUpdateView(UpdateView):
+class StaffRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class MovieUpdateView(UpdateView, LoginRequiredMixin,
+                      PermissionRequiredMixin, StaffRequiredMixin):
     template_name = 'form.html'
     model=Movie
     form_class = MovieForm
@@ -84,11 +93,15 @@ class MovieUpdateView(UpdateView):
     #     LOGGER.info(f"Successfully added new movie: {self.request.POST.get('title')}")
     #     return
 
-class MovieDeleteView(DeleteView):
+class MovieDeleteView(DeleteView, LoginRequiredMixin,
+                      PermissionRequiredMixin, StaffRequiredMixin):
     template_name = 'movie_confirm_delete.html'
     model=Movie
     # form_class = MovieForm
-    success_url= reverse_lazy('core:movie_list')
+    success_url= reverse_lazy('core:movie_list') # ??
+
+    def test_func(self):
+        return super().test_func() and self.request.user.is_superuser
 
 #  to jest praca domowa jak umożliwić userowi sortowanie czyli sortowanie po director
 class MovieListView(ListView):

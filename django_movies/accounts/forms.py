@@ -15,3 +15,12 @@ class SubmittableAuthenticationForm(SubmittableForm, AuthenticationForm):
 
 class SubmittablePasswordChangeForm(SubmittableForm, PasswordChangeForm):
     pass
+
+class SignUpForm(SubmittableForm, UserCreationForm):
+
+    class Meta(UserCreationForm.Meta):
+        fields = ['username', 'first_name']
+
+    def save(self, commit=True):
+        self.instance.is_active = False
+        return super().save(commit)
