@@ -7,8 +7,8 @@ from accounts.forms import (SignUpForm, SubmittableAuthenticationForm,
 
 class SignUpView(CreateView):
     template_name = 'form.html'
-    form_class = SignUpForm
-    success_url = reverse_lazy('index')
+    form_class = SignUpForm  # podpiecie formularza
+    success_url = reverse_lazy('index')   # podpięcie szablonu
 
 class SubmittableLoginView(LoginView):
     form_class = SubmittableAuthenticationForm
