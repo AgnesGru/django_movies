@@ -8,18 +8,19 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.bootstrap import FormActions
 from crispy_forms.layout import Layout, Submit, Row, Column, Div, Button
 
-def capitalized_vlaidator(value: str):  # czyscimy description, wymuszanie wielkiej litery na początku
+def capitalized_vlaidator(value: str):  # funkcja walidacyjna
     if value[0].islower():
         raise ValidationError('Value must be capitalized.')
 
 
 class PastMonthField(forms.DateField):
+
     def validate(self, value):
         super().validate(value)
         if value >= date.today():
             raise ValidationError('only past dates allowed here.')
 
-    def clean(selfself, value):
+    def clean(self, value):
         result = super().clean(value)
         return date(year=result.year, month=result.month, day=1) # tu zawsze będzie 1 dzien miesiaca
 

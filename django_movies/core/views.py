@@ -50,7 +50,7 @@ class MovieCreateView(CreateView, LoginRequiredMixin, PermissionRequiredMixin):
     title = "Add Movie"
     template_name = 'form.html'
     form_class = MovieForm
-    success_url = reverse_lazy('core:movie_list')
+    success_url = reverse_lazy('core:movie_list') #success_url  przekieruje użytkownika po poprawnym zatwierdzeniu formularza na inną stronę.
 
     def form_invalid(self, form):
         LOGGER.warning('Invalid data provided.')
@@ -79,7 +79,7 @@ class StaffRequiredMixin(UserPassesTestMixin):
 class MovieUpdateView(UpdateView, LoginRequiredMixin,
                       PermissionRequiredMixin, StaffRequiredMixin):
     template_name = 'form.html'
-    model=Movie
+    model = Movie
     form_class = MovieForm
     success_url= reverse_lazy('core:movie_list')
 

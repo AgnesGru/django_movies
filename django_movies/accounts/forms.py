@@ -27,6 +27,6 @@ class SignUpForm(SubmittableForm, UserCreationForm):
     def save(self, commit=True, *args, **kwargs):
         user = super().save(commit) # zapis w bazie danych to commit=true
         shoe_size = self.cleaned_data['shoe_size']
-        profile = Profile(shoe_size=shoe_size, user = user)
+        profile = Profile(shoe_size=shoe_size, user=user)
         profile.save()
         return user

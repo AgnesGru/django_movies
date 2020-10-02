@@ -27,7 +27,6 @@ urlpatterns = [
     path('hello/', hello),  # ten 'hello/' to jest endpoint a hello widok
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name = 'index'),
-    path('', IndexView.as_view(), name = 'index'),
     path('core/', include('core.urls', namespace = 'core')),
     path('accounts/', include('accounts.urls', namespace = 'accounts')),
 

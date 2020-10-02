@@ -16,8 +16,8 @@ class Genre(models.Model):
         return self.name
 
 class Director(models.Model):  #  to jest model reżysera
-    name = models.CharField(max_length=100, null=True)
-    second_name = models.CharField(max_length=100, null=True)
+    name = models.CharField(max_length=100, default = None)
+    second_name = models.CharField(max_length=100, default = None)
 
     def __str__(self):
         return f'{self.second_name} {self.name}'
